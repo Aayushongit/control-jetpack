@@ -139,13 +139,26 @@ addpath(fullfile(pwd, 'matlab'));
 results = run_jetpack_humanoid_suite;
 ```
 
-3. For a non-plot run from either location:
+3. For a path-reset run from the project root:
+
+```matlab
+setup_control_jetpack_path(pwd);
+results = run_jetpack_humanoid_suite(false);
+```
+
+4. Or use the root helper:
+
+```matlab
+results = run_suite_from_root(false);
+```
+
+5. For a non-plot run from either location:
 
 ```matlab
 results = run_jetpack_humanoid_suite(false);
 ```
 
-4. Results are saved to:
+6. Results are saved to:
 
 - [matlab/results/jetpack_humanoid_suite_results.mat](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/results/jetpack_humanoid_suite_results.mat)
 

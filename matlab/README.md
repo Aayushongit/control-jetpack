@@ -30,13 +30,26 @@ The package does **not** depend on MuJoCo, Simulink, or desktop-only tooling. It
    results = run_jetpack_humanoid_suite;
    ```
 
-3. For a non-plot run:
+3. For a path-reset run from the project root:
+
+   ```matlab
+   setup_control_jetpack_path(pwd)
+   results = run_jetpack_humanoid_suite(false);
+   ```
+
+4. Or use the root helper:
+
+   ```matlab
+   results = run_suite_from_root(false);
+   ```
+
+5. For a non-plot run:
 
    ```matlab
    results = run_jetpack_humanoid_suite(false);
    ```
 
-4. The suite will:
+6. The suite will:
    - compute capability metrics,
    - run hover, takeoff, landing, maneuverability, and yaw-authority tests,
    - open plots,
