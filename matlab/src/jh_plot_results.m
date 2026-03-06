@@ -1,8 +1,16 @@
 function jh_plot_results(results)
-testNames = {'hover', 'takeoff', 'landing', 'maneuverability', 'yaw'};
+testNames = default_test_order(results);
 
 for idx = 1:numel(testNames)
+    if ~isfield(results, testNames{idx})
+        continue;
+    end
+
     entry = results.(testNames{idx});
+    if ~isfield(entry, 'simulation') || isempty(entry.simulation)
+        continue;
+    end
+
     time = entry.simulation.time;
     state = entry.simulation.state;
     reference = entry.simulation.reference;
@@ -40,5 +48,13 @@ for idx = 1:numel(testNames)
     ylabel('Thrust [N]');
     title('Thruster Commands');
     legend('rear left', 'rear right', 'front left', 'front right');
+end
+end
+
+function testNames = default_test_order(results)
+if isfield(results, 'metadata') && isfield(results.metadata, 'testOrder')
+    testNames = results.metadata.testOrder;
+else
+    testNames = {'hover', 'takeoff', 'landing', 'maneuverability', 'yaw'};
 end
 end

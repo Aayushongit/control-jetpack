@@ -13,13 +13,24 @@ fprintf('Approx pure yaw torque capacity near hover: %.3f N*m\n', capability.pur
 fprintf('Approx lateral acceleration near hover: %.3f m/s^2\n', capability.approxMaxLateralAcceleration);
 fprintf('\n');
 
-tests = {'hover', 'takeoff', 'landing', 'maneuverability', 'yaw'};
+tests = default_test_order(results);
 for idx = 1:numel(tests)
     name = tests{idx};
+    if ~isfield(results, name)
+        continue;
+    end
     entry = results.(name);
     fprintf('%-16s pass=%d  score=%.3f  %s\n', entry.name, entry.pass, entry.score, entry.summary);
 end
 
 fprintf('============================================================\n');
 fprintf('\n');
+end
+
+function tests = default_test_order(results)
+if isfield(results, 'metadata') && isfield(results.metadata, 'testOrder')
+    tests = results.metadata.testOrder;
+else
+    tests = {'hover', 'takeoff', 'landing', 'maneuverability', 'yaw'};
+end
 end

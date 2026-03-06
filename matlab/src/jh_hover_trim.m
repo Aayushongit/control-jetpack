@@ -1,11 +1,13 @@
 function hover = jh_hover_trim(params)
-rearArm = abs(0.5 * (params.thrusters(1).position(1) + params.thrusters(2).position(1)));
-frontArm = abs(0.5 * (params.thrusters(3).position(1) + params.thrusters(4).position(1)));
+count = numel(params.thrusters);
+trimMatrix = zeros(3, count);
 
-frontEach = params.weight / (2.0 * (1.0 + frontArm / rearArm));
-rearEach = (frontArm / rearArm) * frontEach;
+for idx = 1:count
+    momentArm = params.thrusters(idx).position - params.centerOfMass;
+    trimMatrix(:, idx) = [1.0; momentArm(2); -momentArm(1)];
+end
 
-hover.thrust = [rearEach; rearEach; frontEach; frontEach];
-hover.pitch = zeros(4, 1);
-hover.roll = zeros(4, 1);
+hover.thrust = pinv(trimMatrix) * [params.weight; 0.0; 0.0];
+hover.pitch = zeros(count, 1);
+hover.roll = zeros(count, 1);
 end

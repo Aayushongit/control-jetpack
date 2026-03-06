@@ -51,7 +51,8 @@ The package does **not** depend on MuJoCo, Simulink, or desktop-only tooling. It
 
 6. The suite will:
    - compute capability metrics,
-   - run hover, takeoff, landing, maneuverability, and yaw-authority tests,
+   - run baseline hover, takeoff, landing, maneuverability, and yaw-authority tests,
+   - run disturbance rejection, figure-eight tracking, payload sensitivity, actuator-stress, single-thruster degradation, and gain-sweep evaluations,
    - open plots,
    - save `results/jetpack_humanoid_suite_results.mat`.
 
@@ -61,6 +62,12 @@ The package does **not** depend on MuJoCo, Simulink, or desktop-only tooling. It
 - Do the gimbaled thrusters provide enough control authority for pitch, roll, yaw, and lateral translation near hover?
 - Can the vehicle hold hover, climb, descend, and land in a first-order rigid-body simulation?
 - Are the current thruster positions good enough for general hover operations?
+- How well does the controller recover from an external push or torque pulse?
+- How much tracking error appears on a continuous figure-eight trajectory?
+- How sensitive is hover stability to heavier payloads or shifted center of gravity?
+- What happens when commands push thrust or gimbal actuators near their limits?
+- Does hover remain feasible with one degraded rear thruster?
+- How do controller gains trade overshoot, settling, and tilt during takeoff?
 
 ## Real-World Limits
 

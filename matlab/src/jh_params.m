@@ -8,7 +8,7 @@ params.sourceAssetDirs = {
 
 params.mass = 76.48825;
 params.gravity = 9.81;
-params.weight = params.mass * params.gravity;
+params.centerOfMass = [0.0; 0.0; 0.0];
 params.inertia = [
     9.666619, 0.002432, 0.856821;
     0.002432, 9.190699, -0.006777;
@@ -62,6 +62,5 @@ params.controller.maxBodyTorque = [120.0; 120.0; 70.0];
 params.simulation.dt = 0.01;
 params.simulation.defaultDuration = 12.0;
 
-params.hover = jh_hover_trim(params);
-params.controlEffectiveness = jh_control_effectiveness(params, params.hover);
+params = jh_refresh_params(params);
 end

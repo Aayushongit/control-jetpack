@@ -3,7 +3,7 @@ B = zeros(6, 12);
 
 for idx = 1:numel(params.thrusters)
     column = 3 * (idx - 1) + 1;
-    r = params.thrusters(idx).position;
+    r = params.thrusters(idx).position - params.centerOfMass;
 
     thrustForce = [0.0; 0.0; 1.0];
     pitchForce = hover.thrust(idx) * [1.0; 0.0; 0.0];

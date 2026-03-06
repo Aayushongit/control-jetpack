@@ -8,6 +8,7 @@ torqueBody = zeros(3, 1);
 for idx = 1:count
     thrustVector = command.thrust(idx) * directions(:, idx);
     forceBody = forceBody + thrustVector;
-    torqueBody = torqueBody + cross(params.thrusters(idx).position, thrustVector);
+    torqueArm = params.thrusters(idx).position - params.centerOfMass;
+    torqueBody = torqueBody + cross(torqueArm, thrustVector);
 end
 end

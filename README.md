@@ -32,7 +32,7 @@ This is a feasibility and control-screening project, not a final flight-certific
 - [matlab/src](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/src)
   Core dynamics, control allocation, parameter, and capability-analysis functions.
 - [matlab/tests](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/tests)
-  Scenario definitions for hover, takeoff, landing, maneuverability, and yaw-authority testing.
+  Scenario definitions for baseline flight tests plus disturbance, trajectory, payload, actuator-stress, failure, and gain-sweep evaluations.
 - [matlab/urdf_models](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/urdf_models)
   Simplified URDF abstraction for quick robotics-tooling import and inspection.
 - [matlab/results](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/results)
@@ -68,6 +68,18 @@ The suite currently includes:
   Checks lateral translation and altitude retention while remaining stable.
 - `Yaw Authority`
   Checks whether the gimbaled thrusters can generate usable yaw control without unacceptable drift.
+- `Disturbance Rejection`
+  Injects an external force and torque pulse to check recovery behavior.
+- `Trajectory Tracking`
+  Tracks a figure-eight reference to evaluate continuous-path control quality.
+- `Payload Sensitivity`
+  Re-runs hover stabilization with heavier and CG-shifted variants.
+- `Actuator Limit Stress`
+  Commands aggressive waypoint changes to see how the controller behaves near thrust and gimbal limits.
+- `Single-Thruster Degradation`
+  Reduces one rear thruster's max thrust to test degraded hover authority.
+- `Gain Sweep`
+  Compares softer and more aggressive controller gains for overshoot, settling, and tilt.
 
 The suite also computes capability metrics such as:
 
@@ -85,7 +97,8 @@ From the current model abstraction:
 - The configuration is not obviously impossible.
 - The thrust-to-weight ratio is about `2.03`, which is enough for hover and vertical climb margin.
 - The gimbaled-thruster control model has full rank `6` near hover in the rigid-body approximation.
-- Hover, takeoff, landing, maneuverability, and yaw-authority scenario tests all passed in local Octave validation.
+- The baseline hover, takeoff, landing, maneuverability, and yaw-authority scenarios previously passed local Octave validation.
+- Disturbance, trajectory, payload, actuator-stress, failure-case, and gain-sweep evaluations are now included in the MATLAB suite for follow-on screening.
 - The current layout appears first-order plausible for hover-capable operation and further control development.
 
 That does not mean the design is ready for real hardware deployment.
