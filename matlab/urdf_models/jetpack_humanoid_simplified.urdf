@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot name="jetpack_humanoid_simplified">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="76.48825"/>
+      <inertia ixx="9.666619" ixy="0.002432" ixz="0.856821" iyy="9.190699" iyz="-0.006777" izz="1.733592"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.45 0.30 1.50"/>
+      </geometry>
+      <material name="body_gray">
+        <color rgba="0.6 0.6 0.65 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.45 0.30 1.50"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="jetpack_left_mount"/>
+  <joint name="jetpack_left_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="jetpack_left_mount"/>
+    <origin xyz="-0.115924 0.070190 0.072425" rpy="0 0 0"/>
+  </joint>
+
+  <link name="jetpack_right_mount"/>
+  <joint name="jetpack_right_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="jetpack_right_mount"/>
+    <origin xyz="-0.115924 -0.069810 0.072425" rpy="0 0 0"/>
+  </joint>
+
+  <link name="front_booster_left_mount"/>
+  <joint name="front_booster_left_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_booster_left_mount"/>
+    <origin xyz="0.126076 0.122190 0.192425" rpy="0 0 0"/>
+  </joint>
+
+  <link name="front_booster_right_mount"/>
+  <joint name="front_booster_right_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_booster_right_mount"/>
+    <origin xyz="0.126076 -0.121810 0.192425" rpy="0 0 0"/>
+  </joint>
+</robot>
