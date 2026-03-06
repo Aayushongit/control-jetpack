@@ -20,10 +20,14 @@ for idx = 1:numel(testNames)
     figure('Name', entry.name);
 
     subplot(3, 1, 1);
-    plot(time, state(1, :), 'b', time, reference.position(1, :), 'b--', ...
-         time, state(2, :), 'r', time, reference.position(2, :), 'r--', ...
-         time, state(3, :), 'Color', pink, ...
-         time, reference.position(3, :), '--', 'Color', pink);
+    hold on;
+    plot(time, state(1, :), 'b');
+    plot(time, reference.position(1, :), 'b--');
+    plot(time, state(2, :), 'r');
+    plot(time, reference.position(2, :), 'r--');
+    plot(time, state(3, :), 'Color', pink);
+    plot(time, reference.position(3, :), '--', 'Color', pink);
+    hold off;
     grid on;
     xlabel('Time [s]');
     ylabel('Position [m]');
@@ -31,9 +35,11 @@ for idx = 1:numel(testNames)
     legend('x', 'x ref', 'y', 'y ref', 'z', 'z ref');
 
     subplot(3, 1, 2);
-    plot(time, state(7, :) * 180.0 / pi, 'b', ...
-         time, state(8, :) * 180.0 / pi, 'r', ...
-         time, state(9, :) * 180.0 / pi, 'Color', pink);
+    hold on;
+    plot(time, state(7, :) * 180.0 / pi, 'b');
+    plot(time, state(8, :) * 180.0 / pi, 'r');
+    plot(time, state(9, :) * 180.0 / pi, 'Color', pink);
+    hold off;
     grid on;
     xlabel('Time [s]');
     ylabel('Angle [deg]');
@@ -41,10 +47,12 @@ for idx = 1:numel(testNames)
     legend('roll', 'pitch', 'yaw');
 
     subplot(3, 1, 3);
-    plot(time, command.thrust(1, :), 'b', ...
-         time, command.thrust(2, :), 'r', ...
-         time, command.thrust(3, :), 'g', ...
-         time, command.thrust(4, :), 'Color', pink);
+    hold on;
+    plot(time, command.thrust(1, :), 'b');
+    plot(time, command.thrust(2, :), 'r');
+    plot(time, command.thrust(3, :), 'g');
+    plot(time, command.thrust(4, :), 'Color', pink);
+    hold off;
     grid on;
     xlabel('Time [s]');
     ylabel('Thrust [N]');
