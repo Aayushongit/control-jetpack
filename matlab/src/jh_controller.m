@@ -7,11 +7,11 @@ omega = state(10:12);
 positionError = reference.position - position;
 velocityError = reference.velocity - velocity;
 
-forceWorldTarget = params.mass * (
-    reference.acceleration + ...
-    params.controller.positionKp .* positionError + ...
-    params.controller.positionKd .* velocityError + ...
-    [0.0; 0.0; params.gravity]);
+forceWorldTarget = reference.acceleration;
+forceWorldTarget = forceWorldTarget + params.controller.positionKp .* positionError;
+forceWorldTarget = forceWorldTarget + params.controller.positionKd .* velocityError;
+forceWorldTarget = forceWorldTarget + [0.0; 0.0; params.gravity];
+forceWorldTarget = params.mass * forceWorldTarget;
 
 forceWorldTarget = min(max(forceWorldTarget, -params.controller.maxBodyForce), params.controller.maxBodyForce);
 

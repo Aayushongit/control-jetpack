@@ -1,4 +1,4 @@
-# Created by Octave 6.4.0, Fri Mar 06 12:14:58 2026 IST <dell@aayush>
+# Created by Octave 6.4.0, Fri Mar 06 12:32:17 2026 IST <dell@aayush>
 # name: results
 # type: scalar struct
 # ndims: 2
@@ -13,14 +13,14 @@
 # type: sq_string
 # elements: 1
 # length: 15
-20260306T121358
+20260306T123115
 
 
 # name: root_dir
 # type: sq_string
 # elements: 1
 # length: 85
-/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/controls_system/matlab
+/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab
 
 
 # name: source_model
@@ -34,7 +34,7 @@
 # type: sq_string
 # elements: 1
 # length: 130
-/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/controls_system/matlab/urdf_models/jetpack_humanoid_simplified.urdf
+/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab/urdf_models/jetpack_humanoid_simplified.urdf
 
 
 
