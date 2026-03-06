@@ -4,6 +4,11 @@ This folder contains a MATLAB Online-friendly test and simulation package for th
 
 - `../../pndbotics_adam_lite/jetpack/adam_lite_original_bag.xml`
 
+The relevant source assets are available in:
+
+- `../../pndbotics_adam_lite/jetpack/assets`
+- `../../pndbotics_adam_lite/assets`
+
 The package does **not** depend on MuJoCo, Simulink, or desktop-only tooling. It uses a control-oriented rigid-body model derived from the MJCF:
 
 - Total mass, inertia, and thruster locations were taken from the jetpack humanoid model.
@@ -12,14 +17,26 @@ The package does **not** depend on MuJoCo, Simulink, or desktop-only tooling. It
 
 ## Run In MATLAB Online
 
-1. Open this `matlab` folder in MATLAB Online.
-2. Run:
+1. Open this `matlab` folder in MATLAB Online and run:
 
    ```matlab
    results = run_jetpack_humanoid_suite;
    ```
 
-3. The suite will:
+2. If you stay in the project root instead, run:
+
+   ```matlab
+   addpath(fullfile(pwd, 'matlab'))
+   results = run_jetpack_humanoid_suite;
+   ```
+
+3. For a non-plot run:
+
+   ```matlab
+   results = run_jetpack_humanoid_suite(false);
+   ```
+
+4. The suite will:
    - compute capability metrics,
    - run hover, takeoff, landing, maneuverability, and yaw-authority tests,
    - open plots,

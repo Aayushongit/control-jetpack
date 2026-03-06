@@ -1,6 +1,10 @@
 function params = jh_params()
 params.name = 'PNDbotics Adam Lite Jetpack Humanoid';
 params.sourceModel = '../../pndbotics_adam_lite/jetpack/adam_lite_original_bag.xml';
+params.sourceAssetDirs = {
+    '../../pndbotics_adam_lite/jetpack/assets'
+    '../../pndbotics_adam_lite/assets'
+};
 
 params.mass = 76.48825;
 params.gravity = 9.81;

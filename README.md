@@ -8,7 +8,8 @@ It is built around the MuJoCo/MJCF source model located in:
 
 The original robot assets are stored in:
 
-- `../pndbotics_adam_lite/assets`
+- `../pndbotics_adam_lite/jetpack/assets` for the jetpack MJCF alongside `adam_lite_original_bag.xml`
+- `../pndbotics_adam_lite/assets` as the shared parent asset directory
 
 ## Purpose
 
@@ -125,14 +126,20 @@ So the right interpretation is:
 
 ## How To Run In MATLAB Online
 
-1. Open [matlab](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab) in MATLAB Online.
-2. Run:
+1. From the project root, either open [matlab](/media/dell/Hard Drive/Summer of code/Robotics/tests-march2026/control-jetpack/matlab) and run:
 
 ```matlab
 results = run_jetpack_humanoid_suite;
 ```
 
-3. For a non-plot run:
+2. Or stay in the project root and run:
+
+```matlab
+addpath(fullfile(pwd, 'matlab'));
+results = run_jetpack_humanoid_suite;
+```
+
+3. For a non-plot run from either location:
 
 ```matlab
 results = run_jetpack_humanoid_suite(false);

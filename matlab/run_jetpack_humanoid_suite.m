@@ -20,6 +20,7 @@ params = jh_params();
 results.metadata.generated_at = datestr(now, 30);
 results.metadata.root_dir = rootDir;
 results.metadata.source_model = params.sourceModel;
+results.metadata.source_asset_dirs = params.sourceAssetDirs;
 results.metadata.simplified_urdf = fullfile(rootDir, 'urdf_models', 'jetpack_humanoid_simplified.urdf');
 results.capability = jh_analyze_capability(params);
 
