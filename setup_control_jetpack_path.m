@@ -7,7 +7,11 @@ matlabDir = fullfile(projectRoot, 'matlab');
 srcDir = fullfile(matlabDir, 'src');
 testsDir = fullfile(matlabDir, 'tests');
 
-restoredefaultpath;
+try
+    restoredefaultpath;
+catch
+    % MATLAB Online does not support restoredefaultpath.
+end
 addpath(matlabDir);
 addpath(srcDir);
 addpath(testsDir);
