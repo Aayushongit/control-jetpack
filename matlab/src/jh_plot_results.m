@@ -1,5 +1,6 @@
 function jh_plot_results(results)
 testNames = default_test_order(results);
+pink = [0.95, 0.35, 0.65];
 
 for idx = 1:numel(testNames)
     if ~isfield(results, testNames{idx})
@@ -21,7 +22,8 @@ for idx = 1:numel(testNames)
     subplot(3, 1, 1);
     plot(time, state(1, :), 'b', time, reference.position(1, :), 'b--', ...
          time, state(2, :), 'r', time, reference.position(2, :), 'r--', ...
-         time, state(3, :), 'k', time, reference.position(3, :), 'k--');
+         time, state(3, :), 'Color', pink, ...
+         time, reference.position(3, :), '--', 'Color', pink);
     grid on;
     xlabel('Time [s]');
     ylabel('Position [m]');
@@ -31,7 +33,7 @@ for idx = 1:numel(testNames)
     subplot(3, 1, 2);
     plot(time, state(7, :) * 180.0 / pi, 'b', ...
          time, state(8, :) * 180.0 / pi, 'r', ...
-         time, state(9, :) * 180.0 / pi, 'k');
+         time, state(9, :) * 180.0 / pi, 'Color', pink);
     grid on;
     xlabel('Time [s]');
     ylabel('Angle [deg]');
@@ -42,7 +44,7 @@ for idx = 1:numel(testNames)
     plot(time, command.thrust(1, :), 'b', ...
          time, command.thrust(2, :), 'r', ...
          time, command.thrust(3, :), 'g', ...
-         time, command.thrust(4, :), 'k');
+         time, command.thrust(4, :), 'Color', pink);
     grid on;
     xlabel('Time [s]');
     ylabel('Thrust [N]');
